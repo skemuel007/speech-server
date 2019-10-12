@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const logger = require('morgan');
 const cors = require('cors');
@@ -69,7 +70,9 @@ app.use(function(err, req, res, next) {
        res.status(500).json({message: "Something looks wrong :( !!!"});
    });
 
-app.listen(3000, 
+const port = process.env.PORT || 3000;
+
+app.listen(port, 
     () => {
-        console.log('Node server listening on port 3000');
+        console.log('Node server listening on port' + port);
     });
